@@ -11,10 +11,14 @@ jQuery(document).ready(function($){
 			tmpl = _.template(rawTemplate),
 			options = {
 				success: function (files) {
+					console.log(files);
+
 					$.each(files, function(key, file){
+						var url = decodeURI(file.link.replace('dl=0', 'dl=1'));
+
 						var compiled = tmpl({
 							filename: file.name,
-							fileurl: file.link.replace('dl=0', 'dl=1'),
+							fileurl: url,
 
 							translation_filename: woocommerce_dropbox_translation.filename,
 							translation_url: woocommerce_dropbox_translation.url,

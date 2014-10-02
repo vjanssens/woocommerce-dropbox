@@ -3,7 +3,7 @@ Contributors: Vadiem Janssens
 Tags: woocommerce, dropbox, downloadable product
 Requires at least: 3.9
 Tested up to: 4.0
-Stable tag: 1.0.2
+Stable tag: 1.0.3
 License: GPL v3
 
 Easily choose a Dropbox file to be used as a Downloadable Product for WooCommerce.

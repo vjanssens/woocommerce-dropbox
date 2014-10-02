@@ -19,7 +19,7 @@ module.exports = function(grunt) {
 		watch: {
 			scripts: {
 				files: ['js/app.js', 'Gruntfile.js'],
-				tasks: ['jshint']
+				tasks: ['jshint', 'uglify']
 			}
 		}
 	});
