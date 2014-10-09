@@ -10,8 +10,9 @@ Easily choose a Dropbox file to be used as a Downloadable Product for WooCommerc
 
 == Description ==
 The Dropbox extension for WooCommerce gives you the power and ease of use of serving your downloadable products
-through the Dropbox infrastructure. Easily choose a file from your Dropbox account via the Choose from Dropbox
-button and the plugin will do the rest. Your customers will never see the files came from Dropbox and the files public link will never be exposed.
+through the Dropbox infrastructure.
+Easily choose a file from your Dropbox account via the Choose from Dropbox button and the plugin will do the rest.
+Your customers will never see the files came from Dropbox and the files public link will never be exposed.
 
 > Please carefully read the [installation instructions](http://www.wordpress.org/plugins/woocommerce-dropbox/installation/).
 
@@ -40,6 +41,15 @@ Dropbox for WooCommerce is now installed and configured.
 > Please open a support ticket in [the support forums](https://wordpress.org/support/plugin/woocommerce-dropbox)
 
 == Changelog ==
+
+= 1.0.3 =
+* Fix URL encoding bug
+
+= 1.0.2 =
+* Bugfixes
+
+= 1.0.1 =
+* Bugfixes
 
 = 1.0 =
 * Initial version

@@ -5,7 +5,19 @@ module.exports = function(grunt) {
 		pkg: grunt.file.readJSON('package.json'),
 
 		jshint: {
-			all: ['Gruntfile.js', 'js/app.js']
+			files: [
+				'Gruntfile.js',
+				'js/app.js'
+			],
+			options: {
+				expr: true,
+				globals: {
+					jQuery: true,
+					console: true,
+					module: true,
+					document: true
+				}
+			}
 		},
 
 		uglify: {
