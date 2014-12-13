@@ -48,7 +48,7 @@ class WC_Dropbox_Integration extends WC_Integration {
 
 	/**
 	 * Load the Dropbox API and our own script
-	 * TODO: make the API call work via wp_enqueue_script (but with id and data attributes!)
+	 * @TODO: make the API call work via wp_enqueue_script (but with id and data attributes!)
 	 */
 	public function add_scripts() {
 		echo '<script type="text/javascript" src="https://www.dropbox.com/static/api/2/dropins.js" id="dropboxjs" data-app-key="' . $this->api_key . '"></script>';
