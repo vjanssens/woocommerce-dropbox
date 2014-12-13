@@ -1,9 +1,9 @@
 === WooCommerce Dropbox ===
 Contributors: Vadiem Janssens
 Tags: woocommerce, dropbox, downloadable product
-Requires at least: 3.9
-Tested up to: 4.0
-Stable tag: 1.0.3
+Requires at least: 4.0
+Tested up to: 4.1
+Stable tag: 1.0.4
 License: GPL v3
 
 Easily choose a Dropbox file to be used as a Downloadable Product for WooCommerce.
@@ -14,7 +14,16 @@ through the Dropbox infrastructure.
 Easily choose a file from your Dropbox account via the Choose from Dropbox button and the plugin will do the rest.
 Your customers will never see the files came from Dropbox and the files public link will never be exposed.
 
-> Please carefully read the [installation instructions](http://www.wordpress.org/plugins/woocommerce-dropbox/installation/).
+Please carefully read the [installation instructions](http://www.wordpress.org/plugins/woocommerce-dropbox/installation/).
+
+> <strong>Before using this plugin:</strong><br>
+> Dropbox has usage limits on public links when using a free, pro or business account. Please be aware of this limitation before you use this plugin.<br>
+> <br>
+> <strong>Free account:</strong> 20GB per day or 100,000 downloads before the link automatically expires<br>
+> <strong>Pro or Business account:</strong> 200GB per day before the link automatically expires (no limit on number of downloads)<br>
+> <br>
+> This plugin is in best use for PDF's, Text documents, Excel Documents etc. (not for video's or other large files)<br>
+> More information on the usage limits can be found [here](https://www.dropbox.com/help/4204)
 
 = Development =
 Development takes place at [this GitHub Repository](https://github.com/vjanssens/woocommerce-dropbox)
@@ -41,6 +50,9 @@ Dropbox for WooCommerce is now installed and configured.
 > Please open a support ticket in [the support forums](https://wordpress.org/support/plugin/woocommerce-dropbox)
 
 == Changelog ==
+
+= 1.0.4 =
+* Tested plugin for WordPress version 4.1
 
 = 1.0.3 =
 * Fix URL encoding bug
