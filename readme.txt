@@ -21,9 +21,9 @@ Please carefully read the [installation instructions](http://www.wordpress.org/p
 > <br>
 > <strong>Free account:</strong> 20GB per day or 100,000 downloads before the link automatically expires<br>
 > <strong>Pro or Business account:</strong> 200GB per day before the link automatically expires (no limit on number of downloads)<br>
+> More information on the usage limits can be found [here](https://www.dropbox.com/help/4204).<br>
 > <br>
-> This plugin is in best use for PDF's, Text documents, Excel Documents etc. (not for video's or other large files)<br>
-> More information on the usage limits can be found [here](https://www.dropbox.com/help/4204)
+> This plugin is in best use for PDF's, Text documents, Excel Documents etc. (not for video's or other large files).
 
 = Development =
 Development takes place at [this GitHub Repository](https://github.com/vjanssens/woocommerce-dropbox)
@@ -48,6 +48,17 @@ Dropbox for WooCommerce is now installed and configured.
 
 > Still having trouble with the installation? Plugin not working as you would expect?
 > Please open a support ticket in [the support forums](https://wordpress.org/support/plugin/woocommerce-dropbox)
+
+== Frequently Asked Questions ==
+
+= {"error": "Origin does not match any app domain"} =
+Please make sure you have entered the right domain while you're at [step 8](https://wordpress.org/plugins/woocommerce-dropbox/installation/) of the installation instructions.
+You can find the right domain when browsing to your WordPress installation and copy the URL from your browser.
+It is also possible to add multiple domain name's to the <strong>Drop-ins domains</strong> field. This is especially usefull when working with multiple environments (local, dev, production).
+
+= Customer get expired links =
+Dropbox has usage limits in place for shared links.
+Please refer to the [this page](https://wordpress.org/plugins/woocommerce-dropbox/) for more information.
 
 == Changelog ==
 
