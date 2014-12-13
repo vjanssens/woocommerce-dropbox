@@ -39,8 +39,6 @@ class WC_Dropbox {
 
 	public function init() {
 		add_filter( 'woocommerce_integrations', array($this, 'add_integration'), 10 );
-		//add_filter( 'woocommerce_available_download_link', array($this, 'add_to_dropbox_link') );
-		add_action( 'woocommerce_available_download_end', array($this, 'add_to_dropbox_link_action') );
 	}
 
 	/**
@@ -55,15 +53,6 @@ class WC_Dropbox {
 		}
 
 		return $integrations;
-	}
-
-	/**
-	 * Add the download to dropbox button
-	 *
-	 * @param $download
-	 */
-	public function add_to_dropbox_link_action($download) {
-		echo '<a href="' . $download['file']['file'] . '" class="dropbox-saver">Hello world</a>';
 	}
 }
 
