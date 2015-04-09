@@ -14,11 +14,13 @@ jQuery(document).ready(function($){
 
 
 					$.each(files, function(key, file){
-						var url = decodeURI(file.link.replace('dl=0', 'dl=1'));
+						var dlFile = file.link;
+						var url = dlFile.replace('dl=0', 'dl=1').replace(' ', '%20');
 
 						var compiled = tmpl({
 							filename: file.name,
 							fileurl: url,
+
 
 							translation_filename: woocommerce_dropbox_translation.filename,
 							translation_url: woocommerce_dropbox_translation.url,
