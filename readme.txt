@@ -5,7 +5,6 @@ Requires at least: 4.4
 Tested up to: 4.4.1
 Stable tag: 1.0.6
 License: GPL v3
-Text Domain: woocommerce-dropbox
 
 Easily choose a Dropbox file to be used as a Downloadable Product for WooCommerce.
 
@@ -65,7 +64,7 @@ Please refer to [this page](https://wordpress.org/plugins/woocommerce-dropbox/) 
 == Changelog ==
 
 = 1.0.6 =
-Release Date: April 9th, 2015
+Release Date: January 22nd, 2016
 
 * Tested plugin for WordPress version 4.4.1 and WooCommerce 2.5.0
 * Updated installation instructions
