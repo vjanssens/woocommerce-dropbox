@@ -1,0 +1,83 @@
+# Copyright (C) 2016 WooCommerce Dropbox
+# This file is distributed under the same license as the WooCommerce Dropbox package.
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: WooCommerce Dropbox 1.0.6\n"
+"Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/woocommerce-"
+"dropbox\n"
+"POT-Creation-Date: 2016-01-22 20:47+0100\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"PO-Revision-Date: 2016-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"X-Generator: Poedit 1.8.6\n"
+"X-Poedit-KeywordsList: __;_e\n"
+"X-Poedit-Basepath: ..\n"
+"X-Poedit-SearchPath-0: .\n"
+
+#: classes/class-wcintegration.php:15
+msgid "Dropbox Integration"
+msgstr ""
+
+#: classes/class-wcintegration.php:16
+msgid ""
+"Easily add downloadable products right from your Dropbox folder. Before you "
+"can start using our plugin, you will need to make a Dropbox app.<br>Don't "
+"worry, it sounds more difficult than it actually is. Please carefully read "
+"<a href=\"http://wordpress.org/plugins/woocommerce-dropbox/installation/\" "
+"target=\"_blank\">these instructions</a>."
+msgstr ""
+
+#: classes/class-wcintegration.php:40
+msgid "API Key"
+msgstr ""
+
+#: classes/class-wcintegration.php:42
+msgid ""
+"Please provide your Dropbox API key. Please read <a href=\"http://wordpress."
+"org/plugins/woocommerce-dropbox/installation/\" target=\"_blank\">these "
+"instructions</a> in order to obtain your API key."
+msgstr ""
+
+#: classes/class-wcintegration.php:58
+msgid "File Name"
+msgstr ""
+
+#: classes/class-wcintegration.php:59
+msgid "http://"
+msgstr ""
+
+#: classes/class-wcintegration.php:60 classes/class-wcintegration.php:61
+msgid "Choose file"
+msgstr ""
+
+#: classes/class-wcintegration.php:62
+msgid "Insert file URL"
+msgstr ""
+
+#: classes/class-wcintegration.php:63
+msgid "delete"
+msgstr ""
+
+#. Plugin Name of the plugin/theme
+msgid "WooCommerce Dropbox"
+msgstr ""
+
+#. Plugin URI of the plugin/theme
+msgid "http://www.vadiemjanssens.nl/woocommerce-dropbox"
+msgstr ""
+
+#. Description of the plugin/theme
+msgid "WooCommerce Dropbox integration for downloadable products."
+msgstr ""
+
+#. Author of the plugin/theme
+msgid "Vadiem Janssens"
+msgstr ""
+
+#. Author URI of the plugin/theme
+msgid "http://www.vadiemjanssens.nl"
+msgstr ""

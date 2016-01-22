@@ -1,13 +1,13 @@
 <?php
 /*
 Plugin Name: WooCommerce Dropbox
-Version: 1.0.5
+Version: 1.0.6
 Description: WooCommerce Dropbox integration for downloadable products.
 Author: Vadiem Janssens
 Author URI: http://www.vadiemjanssens.nl
 Plugin URI: http://www.vadiemjanssens.nl/woocommerce-dropbox
 Text Domain: woocommerce-dropbox
-Domain Path: /languages
+Domain Path: /lang
 
 This program is free software: you can redistribute it and/or modify
 it under the terms of the GNU General Public License as published by
@@ -33,12 +33,25 @@ if ( ! defined( 'WCDB_URL' ) ) {
 	define( 'WCDB_URL', plugin_dir_url(__FILE__) );
 }
 
+if ( ! defined( 'WCDB_PATH' ) ) {
+	define( 'WCDB_PATH', plugin_dir_path(__FILE__) );
+}
+
 define('WCDB_VERSION', '1.0.6');
 
 class WC_Dropbox {
 
 	public function init() {
+
+		// load translations
+		add_action( 'plugins_loaded', array($this, 'load_translations') );
+
+		// add integration
 		add_filter( 'woocommerce_integrations', array($this, 'add_integration'), 10 );
+	}
+
+	public function load_translations() {
+		load_plugin_textdomain( 'woocommerce-dropbox', false, WCDB_PATH . '/lang/' );
 	}
 
 	/**
@@ -47,7 +60,7 @@ class WC_Dropbox {
 	public function add_integration( $integrations ) {
 		global $woocommerce;
 
-		if ( is_object( $woocommerce ) && version_compare( $woocommerce->version, '2.1', '>=' ) ) {
+		if ( is_object( $woocommerce ) && version_compare( $woocommerce->version, '2.5', '>=' ) ) {
 			include_once( 'classes/class-wcintegration.php' );
 			$integrations[] = 'WC_Dropbox_Integration';
 		}

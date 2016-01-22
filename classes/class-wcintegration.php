@@ -23,7 +23,7 @@ class WC_Dropbox_Integration extends WC_Integration {
 		$this->api_key          = $this->get_option( 'api_key' );
 
 		// Actions.
-		add_action( 'woocommerce_update_options_integration_' .  $this->id, array( $this, 'process_admin_options' ) );
+		add_action( 'woocommerce_update_options_integration_' . $this->id, array( $this, 'process_admin_options' ) );
 
 		// Add our custom scripts
 		if($this->api_key) {
