@@ -33,7 +33,7 @@ if ( ! defined( 'WCDB_URL' ) ) {
 	define( 'WCDB_URL', plugin_dir_url(__FILE__) );
 }
 
-define('WCDB_VERSION', '1.0.5');
+define('WCDB_VERSION', '1.0.6');
 
 class WC_Dropbox {
 

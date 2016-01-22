@@ -1,15 +1,15 @@
 === WooCommerce Dropbox ===
 Contributors: Vadiem Janssens
 Tags: woocommerce, dropbox, downloadable product
-Requires at least: 4.0
-Tested up to: 4.1.1
-Stable tag: 1.0.5
+Requires at least: 4.4
+Tested up to: 4.4.1
+Stable tag: 1.0.6
 License: GPL v3
 
 Easily choose a Dropbox file to be used as a Downloadable Product for WooCommerce.
 
 == Description ==
-The Dropbox extension for WooCommerce gives you the power and ease of use of serving your downloadable products
+The Dropbox for WooCommerce extension gives you the power and ease of use of serving your downloadable products
 through the Dropbox infrastructure.
 Easily choose a file from your Dropbox account via the Choose from Dropbox button and the plugin will do the rest.
 
@@ -20,6 +20,7 @@ Please carefully read the [installation instructions](http://www.wordpress.org/p
 > <br>
 > <strong>Free account:</strong> 20GB per day or 100,000 downloads before the link automatically expires<br>
 > <strong>Pro or Business account:</strong> 200GB per day before the link automatically expires (no limit on number of downloads)<br>
+> <br>
 > More information on the usage limits can be found [here](https://www.dropbox.com/help/4204).<br>
 > <br>
 > This plugin is in best use for PDF's, Text documents, Excel Documents etc. (not for video's or other large files).
@@ -34,19 +35,20 @@ Important; make sure you have installed and activated WooCommerce.
 2. Activate the WooCommerce Dropbox plugin through the 'Plugins' menu in WordPress
 3. Go to [the Dropbox Developers app console](https://www.dropbox.com/developers/apps)
 4. Press the blue button `Create app`
-5. Choose `Drop-ins app`
-6. Set a unique app-name (eg. `[storename]-woocommerce`)
-7. Copy your app key
-8. While on the settings tab add your domain to `Drop-ins domains`
-9. Go back to your WordPress site
-10. Go to `WooCommerce` -> `Settings`
-11. Open the tab `Integration` -> `Dropbox Integration`
-12. Paste your API-key and save changes.
+5. Choose 'Dropbox API' for Step 1
+6. Choose 'Full Dropbox' for Step 2
+7. Set a unique app-name (eg. `[storename]-woocommerce`) for Step 3
+8. While on the Settings tab, copy your app key (somewhere in the middle of the page)
+9. While on the Settings tab, add your domain to the field 'Choose/Saver domains'
+10. Go back to your WordPress site
+11. Go to `WooCommerce` -> `Settings`
+12. Open the tab `Integration` -> `Dropbox Integration`
+13. Paste your API-key and save changes.
 
 Dropbox for WooCommerce is now installed and configured.
 
 > Still having trouble with the installation? Plugin not working as you would expect?
-> Please open a support ticket in [the support forums](https://wordpress.org/support/plugin/woocommerce-dropbox)
+> Please open a support ticket in [the support forums](https://wordpress.org/support/plugin/woocommerce-dropbox).
 
 == Frequently Asked Questions ==
 
@@ -57,12 +59,17 @@ It is also possible to add multiple domain name's to the <strong>Drop-ins domain
 
 = Customer get expired links =
 Dropbox has usage limits in place for shared links.
-Please refer to the [this page](https://wordpress.org/plugins/woocommerce-dropbox/) for more information.
+Please refer to [this page](https://wordpress.org/plugins/woocommerce-dropbox/) for more information.
 
 == Changelog ==
 
-= 1.0.5 =
+= 1.0.6 =
+Release Date: April 9th, 2015
 
+* Tested plugin for WordPress version 4.4.1 and WooCommerce 2.5.0
+* Updated installation instructions
+
+= 1.0.5  =
 Release Date: April 9th, 2015
 
 * Fixed URL encoding bug
