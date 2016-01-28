@@ -53,7 +53,7 @@ class WC_Dropbox_Integration extends WC_Integration {
 	public function add_scripts() {
 		echo '<script type="text/javascript" src="https://www.dropbox.com/static/api/2/dropins.js" id="dropboxjs" data-app-key="' . $this->api_key . '"></script>';
 
-		wp_register_script( 'woocommerce-dropbox', WCDB_URL . 'js/app.min.js', array( 'jquery', 'underscore' ), WCDB_VERSION );
+		wp_register_script( 'woocommerce-dropbox', WCDB_URL . 'assets/js/woocommerce-dropbox.js', array( 'jquery', 'underscore' ), WCDB_VERSION );
 		$translation_array = array(
 			'filename' => __( 'File Name', 'woocommerce' ),
 			'url' => __( "http://", 'woocommerce' ),
