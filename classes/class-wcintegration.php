@@ -27,6 +27,7 @@ class WC_Dropbox_Integration extends WC_Integration {
 
 		// Add our custom scripts
 		if($this->api_key) {
+			add_action( 'admin_head', array( $this, 'add_dropbox_api_js' ) );
 			add_action( 'admin_enqueue_scripts', array( $this, 'add_scripts' ) );
 		}
 	}
@@ -47,13 +48,24 @@ class WC_Dropbox_Integration extends WC_Integration {
 	}
 
 	/**
+	 * Add dropins.js script to the <head> of admin page
+	 * Needs to be done this way because wp_register_script
+	 * does not allow data-attributes or ID.
+	 */
+	public function add_dropbox_api_js() {
+		echo '<script type="text/javascript" src="https://www.dropbox.com/static/api/2/dropins.js" id="dropboxjs" data-app-key="' . $this->api_key . '"></script>';
+	}
+
+	/**
 	 * Load the Dropbox API and our own script
-	 * @TODO: make the API call work via wp_enqueue_script (but with id and data attributes!)
 	 */
 	public function add_scripts() {
-		echo '<script type="text/javascript" src="https://www.dropbox.com/static/api/2/dropins.js" id="dropboxjs" data-app-key="' . $this->api_key . '"></script>';
 
+		// register and enqueue script
 		wp_register_script( 'woocommerce-dropbox', WCDB_URL . 'assets/js/woocommerce-dropbox.js', array( 'jquery', 'underscore' ), WCDB_VERSION );
+		wp_enqueue_script( 'woocommerce-dropbox' );
+
+		// register translations
 		$translation_array = array(
 			'filename' => __( 'File Name', 'woocommerce' ),
 			'url' => __( "http://", 'woocommerce' ),
@@ -63,6 +75,6 @@ class WC_Dropbox_Integration extends WC_Integration {
 			'delete' => __( 'delete', 'woocommerce' )
 		);
 		wp_localize_script( 'woocommerce-dropbox', 'woocommerce_dropbox_translation', $translation_array );
-		wp_enqueue_script( 'woocommerce-dropbox' );
+
 	}
 }
