@@ -64,7 +64,7 @@ Please refer to [this page](https://wordpress.org/plugins/woocommerce-dropbox/) 
 == Changelog ==
 
 = 1.1.0 =
-Release Date: t.b.a.
+Release Date: July 27th, 2016
 
 * Tested plugin for WordPress version 4.5.3 and WooCommerce 2.6.3
 * It's now possible to add a file from Dropbox for variable products
