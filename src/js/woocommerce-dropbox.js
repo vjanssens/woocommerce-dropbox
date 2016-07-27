@@ -1,47 +1,98 @@
-jQuery(document).ready(function($){
+jQuery(function($) {
+	var wcdb = {
 
-	if(typeof Dropbox === 'object') {
-		var rawTemplate = '<tr>' +
-							'<td class="sort"></td>' +
-							'<td class="file_name"><input type="text" class="input_text" placeholder="<%= translation_filename %>" name="_wc_file_names[]" value="<%= filename %>"></td>' +
-							'<td class="file_url"><input type="text" class="input_text" placeholder="<%= translation_url %>" name="_wc_file_urls[]" value="<%= fileurl %>"></td>' +
-							'<td class="file_url_choose" width="1%"><a href="#" class="button upload_file_button" data-choose="<%= translation_choosefile %>" data-update="<%= translation_insertfileurl %>"><%= translation_choosefile %></a></td>' +
-							'<td width="1%"><a href="#" class="delete"><%= translation_delete %></a></td>' +
-						  '</tr>',
-			tmpl = _.template(rawTemplate),
-			options = {
-				success: function (files) {
-					$.each(files, function(key, file){
-						var dlFile = file.link;
-						var url = dlFile.replace('dl=0', 'dl=1').replace(' ', '%20');
+		// hold a reference to the last selected Dropbox button
+		lastSelectedButton: false,
 
-						var compiled = tmpl({
-							filename: file.name,
-							fileurl: url,
+		// options for the file chooser dialog
+		options: {
+			success: function(files) {
+				wcdb.afterFileSelected(files);
+			},
+			linkType: 'preview',
+			multiselect: true
+		},
 
+		init: function() {
+			if(!this.checkBrowserSupport()) {
+				return;
+			}
 
-							translation_filename: woocommerce_dropbox_translation.filename,
-							translation_url: woocommerce_dropbox_translation.url,
-							translation_choosefile: woocommerce_dropbox_translation.choosefile,
-							translation_choosefilebutton: woocommerce_dropbox_translation.choosefilebutton,
-							translation_insertfileurl: woocommerce_dropbox_translation.insertfileurl,
-							translation_delete: woocommerce_dropbox_translation.delete
-						});
-						$(compiled).appendTo('.downloadable_files .ui-sortable');
-					});
-				},
+			// add button for simple product
+			this.addButtons();
+			this.addButtonEventHandler();
 
-				linkType: "preview",
-				multiselect: true
-			};
+			// add buttons when variable product added
+			$('#variable_product_options').on('woocommerce_variations_added', function() {
+				wcdb.addButtons();
+				wcdb.addButtonEventHandler();
+			});
 
-		// create our button
-		var button = Dropbox.createChooseButton(options);
+			// add buttons when variable products loaded
+			$('#woocommerce-product-data').on('woocommerce_variations_loaded', function() {
+				wcdb.addButtons();
+				wcdb.addButtonEventHandler();
+			});
+		},
 
-		// insert the Choose from Dropbox button
-		$('.downloadable_files .button.insert').after(button);
+		checkBrowserSupport: function() {
+			return Dropbox.isBrowserSupported();
+		},
 
-		// add some extra styling
-		$(button).css({margin: '3px 10px 0 0', float: 'right'});
-	}
+		addButtons: function() {
+			var button = $('<a href="#" class="button insert-dropbox">' + woocommerce_dropbox_translation.choose_from_dropbox + '</a>');
+
+			$('.downloadable_files').each(function(index) {
+
+				// we want our button to appear next to the insert button
+				var insertButton = $(this).find('a.button.insert');
+
+				// check if dropbox button already exists on element, bail if so
+				if($(this).find('a.button.insert-dropbox').length) {
+					return;
+				}
+
+				// finally clone the button to the right place
+				insertButton.after(button.clone());
+			});
+		},
+
+		/**
+		 * Adds the click event to the dropbox buttons
+		 * and opens the Dropbox chooser
+		 */
+		addButtonEventHandler: function() {
+			$('a.button.insert-dropbox').on('click', function(e) {
+				e.preventDefault();
+
+				// save a reference to clicked button
+				wcdb.lastSelectedButton = $(this);
+
+				// open file chooser
+				Dropbox.choose(wcdb.options);
+			});
+		},
+
+		/**
+		 * Handle selected files
+		 */
+		afterFileSelected: function(files) {
+			var table = $(wcdb.lastSelectedButton).closest('.downloadable_files').find('tbody');
+			var template = $(wcdb.lastSelectedButton).prev('.button.insert').data('row');
+
+			_.each(files, function(file) {
+
+				var fileRow = $(template);
+				fileRow.find('.file_name > input').val(file.name).change();
+				fileRow.find('.file_url > input').val(file.link.replace('dl=0', 'dl=1'));
+
+				table.append(fileRow);
+			});
+
+			// trigger change event so we can save variation
+			$(table).find('input').last().change();
+		},
+	};
+
+	wcdb.init();
 });

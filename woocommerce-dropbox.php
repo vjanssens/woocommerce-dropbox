@@ -1,11 +1,11 @@
 <?php
 /*
 Plugin Name: WooCommerce Dropbox
-Version: 1.0.6
+Version: 1.1.0
 Description: WooCommerce Dropbox integration for downloadable products.
 Author: Vadiem Janssens
-Author URI: http://www.vadiemjanssens.nl
-Plugin URI: http://www.vadiemjanssens.nl/woocommerce-dropbox
+Author URI: https://www.vadiemjanssens.nl
+Plugin URI: https://www.vadiemjanssens.nl/woocommerce-dropbox
 Text Domain: woocommerce-dropbox
 Domain Path: /lang
 
@@ -37,7 +37,7 @@ if ( ! defined( 'WCDB_PATH' ) ) {
 	define( 'WCDB_PATH', plugin_dir_path(__FILE__) );
 }
 
-define('WCDB_VERSION', '1.0.6');
+define('WCDB_VERSION', '1.1.0');
 
 class WC_Dropbox {
 
@@ -48,6 +48,9 @@ class WC_Dropbox {
 
 		// add integration
 		add_filter( 'woocommerce_integrations', array($this, 'add_integration'), 10 );
+
+		// add settings link to plugins overview page
+		add_filter( 'plugin_action_links_' . plugin_basename(__FILE__), array($this, 'plugin_action_links') );
 	}
 
 	public function load_translations() {
@@ -66,6 +69,17 @@ class WC_Dropbox {
 		}
 
 		return $integrations;
+	}
+
+	/**
+	 * Add a 'Settings' link on the plugins overview page
+	 */
+	public function plugin_action_links( $links ) {
+		$action_links = array(
+			'settings' => '<a href="' . admin_url( 'admin.php?page=wc-settings&tab=integration' ) . '" title="' . esc_attr( __( 'View WooCommerce Dropbox Settings', 'woocommerce-dropbox' ) ) . '">' . __( 'Settings', 'woocommerce-dropbox' ) . '</a>',
+		);
+
+		return array_merge( $action_links, $links );
 	}
 }
 

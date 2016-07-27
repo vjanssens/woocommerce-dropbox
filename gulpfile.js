@@ -1,4 +1,5 @@
 var gulp 			= require('gulp');
+var gulpUtil 		= require('gulp-util');
 var uglify 			= require('gulp-uglify');
 var jshint 			= require('gulp-jshint');
 var sass 			= require('gulp-sass');
@@ -9,7 +10,7 @@ var browserSync 	= require('browser-sync').create();
 */
 gulp.task('js', function() {
 	return gulp.src('src/js/*.js')
-	.pipe(uglify())
+	.pipe(uglify().on('error', gulpUtil.log))
 	.pipe(gulp.dest('assets/js'))
 });
 
@@ -38,7 +39,10 @@ gulp.task('sass', function() {
 */
 gulp.task('watch', ['js', 'sass'], function() {
 	browserSync.init({
-		proxy: 'http://local.wordpress.dev/'
+		proxy: 'http://local.wordpress.dev/',
+		snippetOptions: {
+			whitelist: ['/wp-admin/admin-ajax.php'],
+		}
 	});
 
 	gulp.watch(['src/scss/**/*'], ['sass']);

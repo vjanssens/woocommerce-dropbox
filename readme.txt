@@ -1,9 +1,9 @@
 === WooCommerce Dropbox ===
 Contributors: Vadiem Janssens
 Tags: woocommerce, dropbox, downloadable product
-Requires at least: 4.4
-Tested up to: 4.4.1
-Stable tag: 1.0.6
+Requires at least: 4.5
+Tested up to: 4.5.3
+Stable tag: 1.1.0
 License: GPL v3
 
 Easily choose a Dropbox file to be used as a Downloadable Product for WooCommerce.
@@ -29,7 +29,7 @@ Please carefully read the [installation instructions](http://www.wordpress.org/p
 Development takes place at [this GitHub Repository](https://github.com/vjanssens/woocommerce-dropbox)
 
 == Installation ==
-Important; make sure you have installed and activated WooCommerce.
+**Important:** make sure you have installed and activated WooCommerce.
 
 1. Upload the `woocommerce-dropbox` folder to the `/wp-content/plugins/` directory
 2. Activate the WooCommerce Dropbox plugin through the 'Plugins' menu in WordPress
@@ -62,6 +62,12 @@ Dropbox has usage limits in place for shared links.
 Please refer to [this page](https://wordpress.org/plugins/woocommerce-dropbox/) for more information.
 
 == Changelog ==
+
+= 1.1.0 =
+Release Date: t.b.a.
+
+* Tested plugin for WordPress version 4.5.3 and WooCommerce 2.6.3
+* It's now possible to add a file from Dropbox for variable products
 
 = 1.0.6 =
 Release Date: January 22nd, 2016

@@ -1,0 +1,13 @@
+.button.insert-dropbox {
+	&,
+	&:hover,
+	&:active,
+	&:focus {
+		float: right;
+		margin-right: 7px;
+		background-image: url('../img/dropbox-icon.svg');
+		background-repeat: no-repeat;
+		background-position: 6px center;
+		padding-left: 25px;
+	}
+}

@@ -61,18 +61,17 @@ class WC_Dropbox_Integration extends WC_Integration {
 	 */
 	public function add_scripts() {
 
+		// register and enqueue style
+		wp_register_style( 'woocommerce-dropbox', WCDB_URL . 'assets/css/woocommerce-dropbox.css', false, WCDB_VERSION );
+        wp_enqueue_style( 'woocommerce-dropbox' );
+
 		// register and enqueue script
 		wp_register_script( 'woocommerce-dropbox', WCDB_URL . 'assets/js/woocommerce-dropbox.js', array( 'jquery', 'underscore' ), WCDB_VERSION );
 		wp_enqueue_script( 'woocommerce-dropbox' );
 
 		// register translations
 		$translation_array = array(
-			'filename' => __( 'File Name', 'woocommerce' ),
-			'url' => __( "http://", 'woocommerce' ),
-			'choosefile' => __( 'Choose file', 'woocommerce' ),
-			'choosefilebutton' => str_replace( ' ', '&nbsp;', __( 'Choose file', 'woocommerce' )),
-			'insertfileurl' => __( 'Insert file URL', 'woocommerce' ),
-			'delete' => __( 'delete', 'woocommerce' )
+			'choose_from_dropbox' => __( 'Choose from Dropbox', 'woocommerce-dropbox' )
 		);
 		wp_localize_script( 'woocommerce-dropbox', 'woocommerce_dropbox_translation', $translation_array );
 
