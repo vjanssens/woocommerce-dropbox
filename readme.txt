@@ -61,6 +61,12 @@ It is also possible to add multiple domain name's to the <strong>Drop-ins domain
 Dropbox has usage limits in place for shared links.
 Please refer to [this page](https://wordpress.org/plugins/woocommerce-dropbox/) for more information.
 
+== Screenshots ==
+
+1. Product detail page with Choose from Dropbox button
+2. Plugin settings page
+
+
 == Changelog ==
 
 = 1.1.0 =
