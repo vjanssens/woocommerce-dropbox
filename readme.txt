@@ -63,9 +63,8 @@ Please refer to [this page](https://wordpress.org/plugins/woocommerce-dropbox/) 
 
 == Screenshots ==
 
-1. Product detail page with Choose from Dropbox button
+1. Product detail page with 'Choose from Dropbox'-button
 2. Plugin settings page
-
 
 == Changelog ==
 
