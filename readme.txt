@@ -1,9 +1,9 @@
 === WooCommerce Dropbox ===
 Contributors: Vadiem Janssens
-Tags: woocommerce, dropbox, downloadable product
+Tags: woocommerce, dropbox, downloadable, products, downloadable product
 Requires at least: 4.5
 Tested up to: 4.6
-Stable tag: 1.1.0
+Stable tag: 1.1.1
 WC requires at least: 2.6.0
 WC tested up to: 2.6.4
 License: GPL v3
@@ -69,6 +69,14 @@ Please refer to [this page](https://wordpress.org/plugins/woocommerce-dropbox/) 
 2. Plugin settings page
 
 == Changelog ==
+
+= 1.1.1 =
+Release Date: August 3rd, 2016
+
+* Tested plugin for WordPress version 4.6
+* Fixed a bug where the customizer was unable to load (thanks to tokegameart for reporting)
+* Improved onboarding experience when activating plugin
+* Added support links to plugin overview
 
 = 1.1.0 =
 Release Date: July 27th, 2016

@@ -1,7 +1,7 @@
 <?php
 /*
 Plugin Name: WooCommerce Dropbox
-Version: 1.1.0
+Version: 1.1.1
 Description: WooCommerce Dropbox integration for downloadable products.
 Author: Vadiem Janssens
 Author URI: https://www.vadiemjanssens.nl
@@ -29,30 +29,62 @@ if ( ! function_exists( 'add_filter' ) ) {
 	exit();
 }
 
-if ( ! defined( 'WCDB_URL' ) ) {
-	define( 'WCDB_URL', plugin_dir_url(__FILE__) );
-}
+define( 'WCDB_URL', plugin_dir_url(__FILE__) );
+define( 'WCDB_PATH', plugin_dir_path(__FILE__) );
+define( 'WCDB_BASENAME', plugin_basename(__FILE__) );
 
-if ( ! defined( 'WCDB_PATH' ) ) {
-	define( 'WCDB_PATH', plugin_dir_path(__FILE__) );
-}
-
-define('WCDB_VERSION', '1.1.0');
+define('WCDB_VERSION', '1.1.1');
 
 class WC_Dropbox {
 
+	private $api_key;
+
 	public function init() {
+
+		// register activation hook
+		register_activation_hook( __FILE__, array($this, 'activation_hook') );
+
+		// show admin notices
+		add_action( 'admin_notices', array($this, 'activation_notice') );
 
 		// load translations
 		add_action( 'plugins_loaded', array($this, 'load_translations') );
 
-		// add integration
+		// add settings to integrations tab
 		add_filter( 'woocommerce_integrations', array($this, 'add_integration'), 10 );
 
-		// add settings link to plugins overview page
-		add_filter( 'plugin_action_links_' . plugin_basename(__FILE__), array($this, 'plugin_action_links') );
+		// add extra links to plugins overview page
+		add_filter( 'plugin_action_links_' . WCDB_BASENAME, array($this, 'plugin_action_links') );
+		add_filter( 'plugin_row_meta', array($this, 'plugin_row_meta'), 10, 2 );
 	}
 
+	public function activation_hook() {
+		set_transient( 'activation_hook_transient', true, 5 );
+	}
+
+	/**
+	 * Show a notice after activation of the plugin
+	 */
+	public function activation_notice() {
+		if( get_transient( 'activation_hook_transient' ) ) {
+			$class = 'notice updated notice is-dismissible';
+			$strings = [
+				__( 'Great, you\'re almost ready to start using WooCommerce Dropbox! Please go to the', 'woocommerce-dropbox' ),
+				' <a href="' . admin_url( 'admin.php?page=wc-settings&tab=integration' ) . '" title="' . esc_attr( __( 'View WooCommerce Dropbox Settings', 'woocommerce-dropbox' ) ) . '">',
+				__( 'WooCommerce Settings', 'woocommerce-dropbox' ),
+				'</a> ',
+				__( 'to configure the plugin.', 'woocommerce-dropbox' ),
+			];
+			$message = implode('', $strings);
+
+			printf( '<div class="%1$s"><p>%2$s</p></div>', $class, $message );
+			delete_transient( 'activation_hook_transient' );
+		}
+	}
+
+	/**
+	 * Load translation files
+	 */
 	public function load_translations() {
 		load_plugin_textdomain( 'woocommerce-dropbox', false, WCDB_PATH . '/lang/' );
 	}
@@ -80,6 +112,20 @@ class WC_Dropbox {
 		);
 
 		return array_merge( $action_links, $links );
+	}
+
+	public function plugin_row_meta( $links, $file ) {
+		if ( $file == WCDB_BASENAME ) {
+			$row_meta = array(
+				'instructions'  => '<a href="' . esc_url( 'https://wordpress.org/plugins/woocommerce-dropbox/installation/' ) . '" title="' . esc_attr( __( 'View WooCommerde Dropbox Installation Instructions', 'woocommerce-dropbox' ) ) . '" target="_blank">' . __( 'Installation', 'woocommerce-dropbox' ) . '</a>',
+				'support'  => '<a href="' . esc_url( 'https://wordpress.org/support/plugin/woocommerce-dropbox#postform' ) . '" title="' . esc_attr( __( 'View WooCommerde Dropbox Support Forum', 'woocommerce-dropbox' ) ) . '" target="_blank">' . __( 'Support', 'woocommerce-dropbox' ) . '</a>',
+				'rate'    		=> '<a href="' . esc_url( 'https://wordpress.org/support/view/plugin-reviews/woocommerce-dropbox#postform' ) . '" title="' . esc_attr( __( 'Please Rate WooCommerde Dropbox', 'woocommerce-dropbox' ) ) . '" target="_blank">' . __( 'Rate this plugin', 'woocommerce-dropbox' ) . '</a>',
+			);
+
+			return array_merge( $links, $row_meta );
+		}
+
+		return (array) $links;
 	}
 }
 
