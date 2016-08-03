@@ -13,6 +13,10 @@ jQuery(function($) {
 			multiselect: true
 		},
 
+		/**
+		 * Kick-off WCDB javascript. Check browser compatibility,
+		 * add Choose from Dropbox buttons and attach event handlers.
+		 */
 		init: function() {
 			if(!this.checkBrowserSupport()) {
 				return;
@@ -35,8 +39,13 @@ jQuery(function($) {
 			});
 		},
 
+		/**
+		 * Check if Dropbox is included in the page and if the current browser
+		 * is ssupports Dropbox funcionality
+		 * @return {bool}
+		 */
 		checkBrowserSupport: function() {
-			return Dropbox.isBrowserSupported();
+			return (typeof Dropbox !== 'undefined') && Dropbox.isBrowserSupported();
 		},
 
 		addButtons: function() {
