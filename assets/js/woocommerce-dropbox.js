@@ -1,1 +1,107 @@
-jQuery(function(t){var o={lastSelectedButton:!1,options:{success:function(t){o.afterFileSelected(t)},linkType:"preview",multiselect:!0},init:function(){this.checkBrowserSupport()&&(this.addButtons(),this.addButtonEventHandler(),t("#variable_product_options").on("woocommerce_variations_added",function(){o.addButtons(),o.addButtonEventHandler()}),t("#woocommerce-product-data").on("woocommerce_variations_loaded",function(){o.addButtons(),o.addButtonEventHandler()}))},checkBrowserSupport:function(){return"undefined"!=typeof Dropbox&&Dropbox.isBrowserSupported()},addButtons:function(){var o=t('<a href="#" class="button insert-dropbox">'+woocommerce_dropbox_translation.choose_from_dropbox+"</a>");t(".downloadable_files").each(function(n){var e=t(this).find("a.button.insert");t(this).find("a.button.insert-dropbox").length||e.after(o.clone())})},addButtonEventHandler:function(){t("a.button.insert-dropbox").on("click",function(n){n.preventDefault(),o.lastSelectedButton=t(this),Dropbox.choose(o.options)})},afterFileSelected:function(n){var e=t(o.lastSelectedButton).closest(".downloadable_files").find("tbody"),a=t(o.lastSelectedButton).prev(".button.insert").data("row");_.each(n,function(o){var n=t(a);n.find(".file_name > input").val(o.name).change(),n.find(".file_url > input").val(o.link.replace("dl=0","dl=1")),e.append(n)}),t(e).find("input").last().change()}};o.init()});
+jQuery(function($) {
+	var wcdb = {
+
+		// keep a reference to the last selected Dropbox button
+		lastSelectedButton: false,
+
+		// options for the file chooser dialog
+		options: {
+			success: function(files) {
+				wcdb.afterFileSelected(files);
+			},
+			linkType: 'preview',
+			multiselect: true
+		},
+
+		/**
+		 * Kick-off WCDB javascript. Check browser compatibility,
+		 * add Choose from Dropbox buttons and attach event handlers.
+		 */
+		init: function() {
+			if(!this.checkBrowserSupport()) {
+				return;
+			}
+
+			// add button for simple product
+			this.addButtons();
+			this.addButtonEventHandler();
+
+			// add buttons when variable product added
+			$('#variable_product_options').on('woocommerce_variations_added', function() {
+				wcdb.addButtons();
+				wcdb.addButtonEventHandler();
+			});
+
+			// add buttons when variable products loaded
+			$('#woocommerce-product-data').on('woocommerce_variations_loaded', function() {
+				wcdb.addButtons();
+				wcdb.addButtonEventHandler();
+			});
+		},
+
+		/**
+		 * Check if Dropbox is included in the page and if the current browser
+		 * is ssupports Dropbox funcionality
+		 * @return {bool}
+		 */
+		checkBrowserSupport: function() {
+			return (typeof Dropbox !== 'undefined') && Dropbox.isBrowserSupported();
+		},
+
+		addButtons: function() {
+			var button = $('<button class="button insert-dropbox">' + woocommerce_dropbox_translation.choose_from_dropbox + '</button>');
+
+			$('.downloadable_files').each(function(index) {
+
+				// we want our button to appear next to the insert button
+				var insertButton = $(this).find('a.button.insert');
+
+				// check if dropbox button already exists on element, bail if so
+				if($(this).find('button.button.insert-dropbox').length) {
+					return;
+				}
+
+				// finally clone the button to the right place
+				insertButton.after(button.clone());
+			});
+		},
+
+		/**
+		 * Adds the click event to the dropbox buttons
+		 * and opens the Dropbox chooser
+		 */
+		addButtonEventHandler: function() {
+			$('button.button.insert-dropbox').on('click', function(e) {
+				e.preventDefault();
+
+				// save a reference to clicked button
+				wcdb.lastSelectedButton = $(this);
+
+				// open file chooser
+				Dropbox.choose(wcdb.options);
+			});
+		},
+
+		/**
+		 * Handle selected files
+		 */
+		afterFileSelected: function(files) {
+			var table = $(wcdb.lastSelectedButton).closest('.downloadable_files').find('tbody');
+			var template = $(wcdb.lastSelectedButton).prev('.button.insert').data('row');
+
+			_.each(files, function(file) {
+
+				var fileRow = $(template);
+				fileRow.find('.file_name > input').val(file.name).change();
+				fileRow.find('.file_url > input').val(file.link.replace('dl=0', 'dl=1'));
+
+				table.append(fileRow);
+			});
+
+			// trigger change event so we can save variation
+			$(table).find('input').last().change();
+		},
+	};
+
+	wcdb.init();
+});
