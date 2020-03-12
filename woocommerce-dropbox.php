@@ -108,7 +108,7 @@ class WC_Dropbox {
 	 */
 	public function plugin_action_links( $links ) {
 		$action_links = array(
-			'settings' => '<a href="' . admin_url( 'admin.php?page=wc-settings&tab=integration' ) . '" title="' . esc_attr( __( 'View WooCommerce Dropbox Settings', 'woocommerce-dropbox' ) ) . '">' . __( 'Settings', 'woocommerce-dropbox' ) . '</a>',
+			'settings' => '<a href="' . admin_url( 'admin.php?page=wc-settings&tab=integration&section=woocommerce-dropbox' ) . '" title="' . esc_attr( __( 'View WooCommerce Dropbox Settings', 'woocommerce-dropbox' ) ) . '">' . __( 'Settings', 'woocommerce-dropbox' ) . '</a>',
 		);
 
 		return array_merge( $action_links, $links );
