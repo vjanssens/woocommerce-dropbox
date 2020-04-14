@@ -1,0 +1,8 @@
+/assets
+/.wordpress-org
+/.git
+/.github
+
+.editorconfig
+.distignore
+.gitignore
