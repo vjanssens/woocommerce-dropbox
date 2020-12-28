@@ -49,7 +49,7 @@ jQuery(function($) {
 		},
 
 		addButtons: function() {
-			var button = $('<button class="button insert-dropbox">' + woocommerce_dropbox_translation.choose_from_dropbox + '</button>');
+			var button = $('<button type="button" class="button insert-dropbox">' + woocommerce_dropbox_translation.choose_from_dropbox + '</button>');
 
 			$('.downloadable_files').each(function(index) {
 
@@ -88,12 +88,20 @@ jQuery(function($) {
 		afterFileSelected: function(files) {
 			var table = $(wcdb.lastSelectedButton).closest('.downloadable_files').find('tbody');
 			var template = $(wcdb.lastSelectedButton).prev('.button.insert').data('row');
+			var isVariableProduct = template.includes('_wc_variation_file');
 
 			_.each(files, function(file) {
-
 				var fileRow = $(template);
-				fileRow.find('.file_name > input').val(file.name).change();
-				fileRow.find('.file_url > input').val(file.link.replace('dl=0', 'dl=1'));
+				var searchKey = isVariableProduct ? '_wc_variation_file' : '_wc_file';
+				var fileNameInput = fileRow.find('.file_name > input[name^="' + searchKey + '_names"]');
+				var fileUrlInput = fileRow.find('.file_url > input[name^="' + searchKey + '_urls"]');
+
+				if (fileNameInput.length === 0 || fileUrlInput.length === 0) {
+					throw new Error('Could not find input fields');
+				}
+
+				fileNameInput.val(file.name).change();
+				fileUrlInput.val(file.link.replace('dl=0', 'dl=1'));
 
 				table.append(fileRow);
 			});

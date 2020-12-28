@@ -1,7 +1,7 @@
 <?php
 /**
  * Plugin Name: WooCommerce Dropbox
- * Version: 1.2.3
+ * Version: 1.2.4
  * Description: WooCommerce Dropbox integration for downloadable products.
  * Author: Vadiem Janssens
  * Author URI: https://www.vadiemjanssens.nl
@@ -36,7 +36,7 @@ define( 'WCDB_URL', plugin_dir_url(__FILE__) );
 define( 'WCDB_PATH', plugin_dir_path(__FILE__) );
 define( 'WCDB_BASENAME', plugin_basename(__FILE__) );
 
-define('WCDB_VERSION', '1.2.3');
+define('WCDB_VERSION', '1.2.4');
 
 class WC_Dropbox {
 
@@ -73,7 +73,7 @@ class WC_Dropbox {
 			$class = 'notice updated notice is-dismissible';
 			$strings = [
 				__( 'Great, you\'re almost ready to start using WooCommerce Dropbox! Please go to the', 'woocommerce-dropbox' ),
-				' <a href="' . admin_url( 'admin.php?page=wc-settings&tab=integration' ) . '" title="' . esc_attr( __( 'View WooCommerce Dropbox Settings', 'woocommerce-dropbox' ) ) . '">',
+				' <a href="' . admin_url( 'admin.php?page=wc-settings&tab=integration&section=woocommerce-dropbox' ) . '" title="' . esc_attr( __( 'View WooCommerce Dropbox Settings', 'woocommerce-dropbox' ) ) . '">',
 				__( 'WooCommerce Settings', 'woocommerce-dropbox' ),
 				'</a> ',
 				__( 'to configure the plugin.', 'woocommerce-dropbox' ),
