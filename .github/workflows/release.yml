@@ -1,4 +1,4 @@
-name: Deploy to WordPress
+name: Release new tagged version to WordPress
 
 on:
   push:
