@@ -19,8 +19,10 @@ Please carefully read the [installation instructions](http://www.wordpress.org/p
 > <strong>Before using this plugin:</strong><br>
 > Dropbox has usage limits on public links when using a free, pro or business account. Please be aware of this limitation before you use this plugin.<br>
 > <br>
-> <strong>Free account:</strong> 20GB per day or 100,000 downloads before the link automatically expires<br>
-> <strong>Pro or Business account:</strong> 200GB per day before the link automatically expires (no limit on number of downloads)<br>
+> <strong>Basic accounts and accounts on a trial of Dropbox Business:</strong> 20 GB of bandwidth and 100,000 downloads per day<br>
+> <strong>Plus, Family, and Professional accounts:</strong> 400 GB and unlimited downloads per day<br>
+> <strong>Dropbox Business Standard accounts:</strong> 1 TB and unlimited downloads per day<br>
+> <strong>Dropbox Business Advanced and Enterprise accounts:</strong> 4 TB and unlimited downloads per day<br>
 > <br>
 > More information on the usage limits can be found [here](https://www.dropbox.com/help/4204).<br>
 > <br>
