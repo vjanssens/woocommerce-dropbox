@@ -38,6 +38,13 @@ define( 'WCDB_BASENAME', plugin_basename(__FILE__) );
 
 define('WCDB_VERSION', '1.2.5');
 
+// declare support for HPOS
+add_action( 'before_woocommerce_init', function() {
+	if ( class_exists( \Automattic\WooCommerce\Utilities\FeaturesUtil::class ) ) {
+		\Automattic\WooCommerce\Utilities\FeaturesUtil::declare_compatibility( 'custom_order_tables', __FILE__, true );
+	}
+} );
+
 class WC_Dropbox {
 
 	private $api_key;
