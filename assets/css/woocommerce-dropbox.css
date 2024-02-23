@@ -2,8 +2,7 @@
 .button.insert-dropbox:hover,
 .button.insert-dropbox:active,
 .button.insert-dropbox:focus {
-  float: right;
-  margin-right: 7px;
+  margin-left: 7px;
   background-image: url("../img/dropbox-icon.svg");
   background-repeat: no-repeat;
   background-position: 6px center;
